@@ -22,6 +22,7 @@ exports.up = knex => {
 
       table.string('firstName')
       table.string('lastName')
+      table.string('email')
       table.string('profileImageUrl')
       table.timestamps(true, true)
     })

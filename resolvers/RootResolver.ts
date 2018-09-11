@@ -1,19 +1,25 @@
-import { compileSchema, SchemaRoot, Query, Mutation } from '@capaj/typegql'
-import { Author } from '../models/Author'
+import { compileSchema, SchemaRoot, Query, Mutation, Arg } from '@capaj/typegql'
+import Author from '../models/Author'
+import { printSchema, GraphQLInt } from 'graphql'
 
 @SchemaRoot()
-class RootResolver {
+export class RootResolver {
   @Query({
     type: [Author],
     description: 'Get all authors'
   })
   async authors() {
-    // const a = new Author()
-    // a.firstName = 'Michał'
-    // a.lastName = 'Lytek'
-    // a.profileImageUrl =
-    //   'https://avatars2.githubusercontent.com/u/10618781?s=460&v=4'
-    return Author.query()
+    const authors = await Author.query()
+    return authors
+  }
+
+  @Query({
+    type: Author,
+    description: 'Get author by id'
+  })
+  async author(@Arg({ type: GraphQLInt }) id: number) {
+    const author = await Author.query().findById(id)
+    return author
   }
 
   @Mutation({
@@ -24,5 +30,3 @@ class RootResolver {
     return Author.query().insertAndFetch(data)
   }
 }
-
-export const compiledSchema = compileSchema({ roots: [RootResolver] })

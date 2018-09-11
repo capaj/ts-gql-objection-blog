@@ -1,15 +1,35 @@
+import { DuplexObjectType, DuplexField, Field } from '@capaj/typegql'
+import TimestampedModel from './TimestampedModel'
 import { Model } from 'objection'
-import { DuplexObjectType, DuplexField } from '@capaj/typegql'
+import path from 'path'
+import { ObjectionRelationsAsTypegqlFields } from '../utils/ExposeRelations'
+
+type ElementType =
+  | 'text'
+  | 'video'
+  | 'quiz-checkbox-s'
+  | 'quiz-checkbox-o'
+  | 'link'
 
 @DuplexObjectType()
-export class Post extends Model {
+@ObjectionRelationsAsTypegqlFields()
+export default class Post extends TimestampedModel {
   static tableName = 'posts'
   @DuplexField()
-  firstName: string
+  title: string
   @DuplexField()
-  lastName: string
-  @DuplexField()
-  profileImageUrl: string
-  // @DuplexField()
-  // age: number
+  content: string
+  @Field()
+  type: ElementType
+
+  static relationMappings = {
+    author: {
+      relation: Model.BelongsToOneRelation,
+      modelClass: path.join(__dirname, '/Author'),
+      join: {
+        to: 'authors.id',
+        from: 'posts.authorId'
+      }
+    }
+  }
 }
