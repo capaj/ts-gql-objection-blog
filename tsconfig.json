@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "rootDirs": ["."],
+    "outDir": "../dist",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // "declaration": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "inlineSources": true,
+    "types": ["node"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "allowUnreachableCode": false,
+    "allowJs": true,
+    "jsx": "react",
+    "preserveConstEnums": true
+  },
+  "exclude": [".git", "**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js"]
+}

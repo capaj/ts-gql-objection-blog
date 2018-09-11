@@ -1,0 +1,33 @@
+{
+  "name": "ts-gql-objection-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=developmen DEBUG=blog*,knex:query,knex:bindings ts-node-dev server.ts"
+  },
+  "dependencies": {
+    "@capaj/typegql": "^0.6.1",
+    "altair-express-middleware": "^1.0.6",
+    "apollo-server": "^2.0.7",
+    "apollo-server-express": "^2.0.6",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "graphql": "^14.0.2",
+    "graphql-voyager": "^1.0.0-rc.20",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "objection": "^1.2.6",
+    "reflect-metadata": "^0.1.12",
+    "sqlite3": "^4.0.2",
+    "type-graphql": "^0.14.0",
+    "typescript": "^3.0.3"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.30"
+  },
+  "author": "",
+  "license": "MIT"
+}
